@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    let api = 'https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
+    let api = 'https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
     let key = 'LPuQwxrvLY7hspWf1eST';
 
     let ranks = [
@@ -77,7 +77,8 @@ $( document ).ready(function() {
     function calculatePercentToNextRank(result) {
         let nextDivisionStartingRP = getNextDivisionStartingRP(result);
         let remainingPoints = nextDivisionStartingRP - result[0]['global']['rank']['rankScore'];
-        let percentageToNextRank = 100 - ((remainingPoints * 100) / nextDivisionStartingRP);
+        let gapBetweenDivisions = getGapBetweenDivisions(result);
+        let percentageToNextRank = 100 - ((remainingPoints * 100) / gapBetweenDivisions);
         return percentageToNextRank;
     }
 
@@ -200,7 +201,7 @@ $( document ).ready(function() {
     }
 
     function getNextDivisionStartingRP(result) {
-        let gapBetweenDivisions = ranks.find(item => item.rank === getCurrentRankName(result)).rpGap / 4;
+        let gapBetweenDivisions = getGapBetweenDivisions(result);
         let gapToNextLeague = ranks.find(item => item.rank === getCurrentRankName(result)).rpGap;
         let nextLeagueStartingRP = ranks.find(item => item.rank === getCurrentRankName(result)).acumulatedRp;
         let currentLeagueStartingRP = nextLeagueStartingRP - gapToNextLeague;
@@ -219,5 +220,9 @@ $( document ).ready(function() {
 
     function getCurrentRankDivision(result) {
         return result[0]['global']['rank']['rankDiv'] - 1; //We get the next rankDivision
+    }
+
+    function getGapBetweenDivisions(result) {
+        return ranks.find(item => item.rank === getCurrentRankName(result)).rpGap / 4;
     }
 });
