@@ -41,6 +41,7 @@ $( document ).ready(function() {
             url: api + key,
             contentType: "application/json",
             dataType: 'json',
+            type: 'GET',
             success: function(result){
                 $('#loading').remove();
                 let online = isOnline(result);
