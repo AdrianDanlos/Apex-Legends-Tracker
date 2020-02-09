@@ -263,4 +263,7 @@ footer, #legend{
     #loading-text{
         white-space: nowrap;
     }
+    #most-played{
+        display: none !important;
+    }
 }
