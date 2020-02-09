@@ -1,6 +1,10 @@
 $( document ).ready(function() {
-    let api = 'https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
+    let api = 'https://secret-ocean-49799.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
     let key = 'LPuQwxrvLY7hspWf1eST';
+
+    //Proxies
+    //https://secret-ocean-49799.herokuapp.com/
+    //https://cors-anywhere.herokuapp.com/
 
     let ranks = [
         {'rank': 'bronze',
@@ -41,8 +45,8 @@ $( document ).ready(function() {
             url: api + key,
             contentType: "application/json",
             dataType: 'json',
-            type: 'GET',
             success: function(result){
+                console.log(result);
                 $('#loading').remove();
                 let online = isOnline(result);
                 let datosRanking = getRanking(result);
@@ -50,7 +54,6 @@ $( document ).ready(function() {
                 let percentageToNextRank = calculatePercentToNextRank(result);
                 let nextRankLogoUrl = getNextRankLogo(result);
                 visualizarDatos(datosTotales, datosRanking, online, "N3Essential", percentageToNextRank, nextRankLogoUrl);
-                console.log(result);
             }
         });
     }
@@ -202,14 +205,14 @@ $( document ).ready(function() {
     }
 
     function getNextDivisionStartingRP(result) {
+
         let gapBetweenDivisions = getGapBetweenDivisions(result);
         let gapToNextLeague = ranks.find(item => item.rank === getCurrentRankName(result)).rpGap;
         let nextLeagueStartingRP = ranks.find(item => item.rank === getCurrentRankName(result)).acumulatedRp;
-        let currentLeagueStartingRP = nextLeagueStartingRP - gapToNextLeague;
-        let nextDivisionStartingRP;
+        let nextDivisionStartingRP = nextLeagueStartingRP - gapToNextLeague;
 
         do {
-            nextDivisionStartingRP = currentLeagueStartingRP + gapBetweenDivisions;
+            nextDivisionStartingRP += gapBetweenDivisions;
         }while (nextDivisionStartingRP < result[0]['global']['rank']['rankScore']);
 
         return nextDivisionStartingRP;
