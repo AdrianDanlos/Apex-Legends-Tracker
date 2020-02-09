@@ -12,9 +12,7 @@
 </p>
 
 <h3 align="center">Go to 
-  <a href="https://apex-opgg.herokuapp.com/">
-    <span>ApexOPGG</span>
-  </a>
+  <a href="https://apex-opgg.herokuapp.com/" target="_blank">ApexOPGG</a>
 </h3>
 
 <p align="center">
@@ -34,7 +32,7 @@ Since there is not an Apex Legends official API yet, we have to work with unnofi
 In order to get players data, in game banners must be added to each legend which is very unconvenient and unreliable.
 Therefore this project will remain private until Apex Legends offers a public API to effectively retrieve players data.
 
-This <a href="https://apex-opgg.herokuapp.com/"><span>DEMO</span></a> uses an Apex account that has correctly seted up in game banners.
+This <a href="https://apex-opgg.herokuapp.com/" target="_blank">DEMO</a> uses an Apex account that has correctly seted up in game banners.
 
 ## API Used
 I encourage you to visit the <a href="https://github.com/HugoDerave/ApexLegendsAPI/">unofficial Apex Legends API</a> used for this project. 
