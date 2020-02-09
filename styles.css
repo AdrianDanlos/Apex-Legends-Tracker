@@ -130,11 +130,12 @@ footer{
     height: 40px;
     width: 97%;
 }
-footer, #legend{
-    font-weight: 300;
+footer .fa{
+    color: black;
+    font-size: 1.2rem;
 }
 #refresh-time{
-    padding-right: 50px;
+    padding-right: 1rem;
 }
 #loading{
     display: flex;
@@ -240,6 +241,7 @@ footer, #legend{
         width: 100%;
         right: 0;
         left:0;
+        font-weight: 300;
     }
     #kills{
         justify-content: flex-end;
