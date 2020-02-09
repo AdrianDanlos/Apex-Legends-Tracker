@@ -74,7 +74,7 @@ section {
     left: 0;
     height: 40px;
     width: 100%;
-    background-color: rgba(1, 30, 61, 0.9);
+    background-color: rgba(9, 14, 36, 0.9);
     color: #ececec;
     padding: 50px 0;
 }
@@ -188,6 +188,26 @@ footer, #legend{
     margin-top: -2rem;
 }
 
+#apex-logo-container{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 70px;
+    height: auto;
+}
+
+#apex-logo{
+    width: 100%;
+}
+
+#apex-typo{
+    width: 100px;
+    height: 55px;
+    margin-top: 0.5rem;
+}
+
 
 
 /*loading animation*/
@@ -242,7 +262,7 @@ footer, #legend{
     .decorator-container{
         display: none;
     }
-    #rankPercentage{
+    #rankPercentage, #apex-logo-container, #most-played{
         display: none !important;
     }
     #legend-container{
@@ -262,8 +282,5 @@ footer, #legend{
     }
     #loading-text{
         white-space: nowrap;
-    }
-    #most-played{
-        display: none !important;
     }
 }
