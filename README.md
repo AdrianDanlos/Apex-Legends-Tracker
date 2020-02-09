@@ -25,14 +25,14 @@
 
 
 ## Overview
-This project started with the aim to develop an opened Apex Legends tracker for all the players who would like to keep track of their in game stats.
+This project started with the aim to develop an open Apex Legends tracker for all the players who would like to keep track of their in-game stats.
 
-Since there is not an Apex Legends official API yet, we have to work with unnoficial API's that despite being very welcomed by the community do not provide as much data as we would like to.
+Since there is not an Apex Legends official API yet, we have to work with unnoficial API's that, despite being very welcomed by the community do not provide as much data as we would like to.
 
-In order to get players data, in game banners must be added to each legend which is very inconvenient and unreliable.
+In order to get players data, in-game banners must be added to each legend which is very inconvenient and unreliable.
 Therefore this project will remain private until Apex Legends offers a public API to effectively retrieve players data.
 
-This <a href="https://apex-opgg.herokuapp.com/" target="_blank">DEMO</a> uses an Apex account that has correctly seted up in game banners.
+This <a href="https://apex-opgg.herokuapp.com/" target="_blank">DEMO</a> uses an Apex account that has in-game banners correctly set up. 
 
 ## API Used
 I encourage you to visit the <a href="https://github.com/HugoDerave/ApexLegendsAPI/">unofficial Apex Legends API</a> used for this project. 
