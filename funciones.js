@@ -1,5 +1,7 @@
 $( document ).ready(function() {
-    let api = 'https://secret-ocean-49799.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul&auth=';
+    let allMyAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
+    let testingAccount = 'N3MachineSmurf';
+    let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${allMyAccounts}&auth=`;
     let key = 'LPuQwxrvLY7hspWf1eST';
 
     //Proxies
@@ -34,10 +36,10 @@ $( document ).ready(function() {
 
     //First call
     ajaxCall();
-    //Repetitive calls each minute
+    //Repetitive calls
     setInterval(()=>{
         ajaxCall();
-    }, 60000); //1min
+    }, 600000); //10min
 
 
     function ajaxCall(){
@@ -46,6 +48,9 @@ $( document ).ready(function() {
             contentType: "application/json",
             dataType: 'json',
             success: function(result){
+                if(!(result instanceof Array)){
+                    result = [result];
+                }
                 console.log(result);
                 $('#loading').remove();
                 let online = isOnline(result);
@@ -53,7 +58,8 @@ $( document ).ready(function() {
                 let datosTotales = sumarDatos(result);
                 let percentageToNextRank = calculatePercentToNextRank(result);
                 let nextRankLogoUrl = getNextRankLogo(result);
-                visualizarDatos(datosTotales, datosRanking, online, "N3Essential", percentageToNextRank, nextRankLogoUrl);
+                let favouriteLegendUrl = getFavouriteLegend(result);
+                visualizarDatos(datosTotales, datosRanking, online, 'N3Essential', percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
             }
         });
     }
@@ -133,7 +139,7 @@ $( document ).ready(function() {
         return datosTotales;
     }
 
-    function visualizarDatos(datosTotales, datosRanking, online, user, percentageToNextRank, nextRankLogoUrl) {
+    function visualizarDatos(datosTotales, datosRanking, online, user, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl) {
         //Date
         createDateNode();
         //User
@@ -165,6 +171,9 @@ $( document ).ready(function() {
         //Next rank logo
         $('#next-rank-logo').attr('src', nextRankLogoUrl);
 
+        //Favorite legend banner
+        $('#most-played img').attr('src', favouriteLegendUrl);
+        $('#most-played').css('display', 'flex');
 
     }
 
@@ -229,4 +238,31 @@ $( document ).ready(function() {
     function getGapBetweenDivisions(result) {
         return ranks.find(item => item.rank === getCurrentRankName(result)).rpGap / 4;
     }
+
+    function getFavouriteLegend(result) {
+        let allLegendsObject = result[0]['legends']['all'];
+
+        let favouriteLegend;
+        let highestKills = 0;
+        for (let key in allLegendsObject) {
+            if (allLegendsObject[key].hasOwnProperty('kills')) {
+                if(highestKills < parseInt(allLegendsObject[key]['kills'])){
+                    highestKills = allLegendsObject[key]['kills'];
+                    favouriteLegend = key;
+                }
+            }
+        }
+        console.log(favouriteLegend);
+        return `http://api.apexlegendsstatus.com/assets/icons/${favouriteLegend.toLowerCase()}.png`;
+    }
+
+    //To ouptut an object into a json file
+    /*function download(content, fileName, contentType) {
+            let a = document.createElement("a");
+            let file = new Blob([content], {type: contentType});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+        download(JSON.stringify(result[0]['legends']['all']), 'json.txt', 'text/plain');*/
 });
