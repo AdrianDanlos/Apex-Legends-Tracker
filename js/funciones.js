@@ -1,31 +1,20 @@
 $( document ).ready(function() {
-    let allMyAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
-    let testingAccount = 'N3MachineSmurf';
-    let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${allMyAccounts}&auth=`;
+    let myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
+    let playerAccount = myAccounts;
+    let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
     let key = 'LPuQwxrvLY7hspWf1eST';
+    let xhr; //AjaxCall Object
+    let refreshAvailable = true;
 
     //Proxies
     //https://secret-ocean-49799.herokuapp.com/
     //https://cors-anywhere.herokuapp.com/
 
-    let ranks = [
-        {'rank': 'bronze',
-            'rpGap': 1200,
-            'acumulatedRp': 1200},
-        {'rank': 'silver',
-            'rpGap': 1600,
-            'acumulatedRp': 2800},
-        {'rank': 'gold',
-            'rpGap': 2000,
-            'acumulatedRp': 4800},
-        {'rank': 'platinum',
-            'rpGap': 2400,
-            'acumulatedRp': 7200},
-        {'rank': 'diamond',
-            'rpGap': 2800,
-            'acumulatedRp': 10000},
-        {'rank': 'apexpredator'}
-    ];
+    //Get Ranks from JSON
+    let ranks;
+    $.getJSON('data/ranks.json', function(json) {
+        ranks = json;
+    });
 
     //Instantiating loading bar
     let bar = new ldBar(".myBar", {
@@ -36,33 +25,36 @@ $( document ).ready(function() {
 
     //First call
     ajaxCall();
-    //Repetitive calls
-    setInterval(()=>{
-        ajaxCall();
-    }, 600000); //10min
 
 
     function ajaxCall(){
-        $.ajax({
+        xhr = $.ajax({
             url: api + key,
             contentType: "application/json",
             dataType: 'json',
             success: function(result){
-                if(!(result instanceof Array)){
+                if(!(result instanceof Array)){//Si la busqueda es de un solo jugador envolvemos los datos deuveltos en un array
                     result = [result];
                 }
                 console.log(result);
-                $('#loading').remove();
                 let online = isOnline(result);
                 let datosRanking = getRanking(result);
                 let datosTotales = sumarDatos(result);
                 let percentageToNextRank = calculatePercentToNextRank(result);
                 let nextRankLogoUrl = getNextRankLogo(result);
                 let favouriteLegendUrl = getFavouriteLegend(result);
-                visualizarDatos(datosTotales, datosRanking, online, 'N3Essential', percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+                let nameDisplayed = playerAccount.includes('N3Essential') ? 'N3Essential' : result[0]['global']['name']; //De esta manera cuando se realiza una busqueda masiva a nuestras smurfs solo sale N3essential
+                visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+            },
+            error: function (error) {
+                console.log('----ERROR----')
+                if(error.status === 404){
+                    $('#notFoundText').fadeIn();
+                }
             }
         });
     }
+
 
     function isOnline(result) {
         let online = false;
@@ -98,41 +90,18 @@ $( document ).ready(function() {
             "wins": 0,
             "top3": 0
         };
-        //get stats from selected legend
-        result.forEach((item, i) => {
-            const selectedLegend = Object.values(result[i]['legends']['selected'])[0]; //constante dado que nunca le vamos a asignar otro valor durante la iteración actual. La volvemos a declarar en cada iteración.
 
-            datosTotales.kills += selectedLegend['kills'] || 0;
-            datosTotales.wins += selectedLegend['wins_season_3'] || 0;
-            datosTotales.top3 += selectedLegend['top_3'] || 0;
-            /*console.log('--------------SELECTED LEGEND-------------');
-            console.log('Account number: ' + i);
-            console.log('Selected legend: ' + Object.keys(result[i]['legends']['selected'])[0]);
-            console.log('Kills: ' + selectedLegend['kills']);
-            console.log('Wins: ' + selectedLegend['wins_season_3']);
-            console.log('Top3: ' + selectedLegend['top_3']);
-            console.log('Total Kills: ' + datosTotales.kills);
-            console.log('Total wins: ' + datosTotales.wins);
-            console.log('Total top3: ' + datosTotales.top3);*/
-        });
-
-        //get stats from all legends except the selected one to avoid duplicated data
+        //get stats from all legends
         result.forEach((item, i)=>{ //iterate trough accounts
-            let selectedLegendKey = Object.keys(result[i]['legends']['selected'])[0]; //legend selected in this account
             let allLegendsArray = result[i]['legends']['all']; //all legends array
             if(allLegendsArray){ //if the api gets 'all legends' object
-                /*console.log('-------------ALL LEGENDS--------------');
-                console.log('Account number: ' + i);*/
+                //console.log('Account number: ' + i);
                 Object.keys(allLegendsArray).forEach((key, x)=> { //iterate through 'all' legends
-                    if(selectedLegendKey !== Object.keys(allLegendsArray)[x]){ //we keep adding data except if the legend found in 'all legends' section is the selected one.
-                        let iteratingLegend = Object.values(allLegendsArray)[x]; //the legend we are iterating trhough
-                        datosTotales.kills += parseInt(iteratingLegend['kills'], 10);
-                        datosTotales.wins += parseInt(iteratingLegend['wins_season_3'], 10) || 0;
-                        datosTotales.top3 += parseInt(iteratingLegend['top_3'], 10) || 0;
-                        /*console.log('current legend in iteration: ' + Object.keys(allLegendsArray)[x]);
-                        console.log('kills: ' + iteratingLegend['kills']);
-                        console.log('Total Kills: ' + datosTotales.kills);*/
-                    }
+                    let iteratingLegend = Object.values(allLegendsArray)[x]; //the legend we are iterating trhough
+                    datosTotales.kills += parseInt(iteratingLegend['kills'], 10) || 0;
+                    datosTotales.wins += parseInt(iteratingLegend['wins_season_3'], 10) || 0;
+                    datosTotales.wins += parseInt(iteratingLegend['wins_season_4'], 10) || 0;
+                    datosTotales.top3 += parseInt(iteratingLegend['top_3'], 10) || 0;
                 });
             }
         });
@@ -197,19 +166,20 @@ $( document ).ready(function() {
             $('footer').prepend('<span id="refresh-time"></span>');
             refreshTime = $('#refresh-time');
         }
-        refreshTime.html("Last refresh: " + (d.getHours()<10?'0':'') + d.getHours() + ' : ' + (d.getMinutes()<10?'0':'') + d.getMinutes() + ' : ' + (d.getSeconds()<10?'0':'') + d.getSeconds() + '  GMT+1');
+        refreshTime.html("Last refresh: " + (d.getHours()<10?'0':'') + d.getHours() + ':' + (d.getMinutes()<10?'0':'') + d.getMinutes() + '  <span class="timezone">GMT+1</span>');
     }
 
     function getNextRankLogo(result) {
         let rankName = getCurrentRankName(result);
         let rankDivision = getCurrentRankDivision(result);
-
         if(rankDivision === 1){ //Make jump from leagues
             let indexOfCurrentRank = ranks.findIndex(item => item.rank === rankName); //Gets the index of the element that has the rankName passed
             rankName = ranks[indexOfCurrentRank + 1];
             rankDivision = 4;
         }
-
+        else{
+            rankDivision -= 1;
+        }
         return `http://api.apexlegendsstatus.com/assets/ranks/${rankName + rankDivision}.png`;
     }
 
@@ -232,7 +202,7 @@ $( document ).ready(function() {
     }
 
     function getCurrentRankDivision(result) {
-        return result[0]['global']['rank']['rankDiv'] - 1; //We get the next rankDivision
+        return result[0]['global']['rank']['rankDiv']; //We get the next rankDivision
     }
 
     function getGapBetweenDivisions(result) {
@@ -251,10 +221,81 @@ $( document ).ready(function() {
                     favouriteLegend = key;
                 }
             }
+            else{
+                return "img/unknown.png";
+            }
         }
         console.log(favouriteLegend);
         return `http://api.apexlegendsstatus.com/assets/icons/${favouriteLegend.toLowerCase()}.png`;
     }
+
+    function rotateRefreshIcon(refreshIcon){
+        refreshIcon.css('transform','rotate(180deg)');
+        refreshIcon.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+            refreshIcon.css('transition','0s');
+            refreshIcon.css('transform','rotate(0deg)');
+        });
+        refreshIcon.css('transition','1s');
+    }
+
+    //----EVENTS----
+
+    //Search for player on ENTER keypress
+    $(".search-form").on('keyup', function (e) {
+        if (e.key === 'Enter' && refreshAvailable) {
+            playerAccount = $(".search-form").val();
+            if(playerAccount === 'N3Essential'){
+                playerAccount = myAccounts
+            }
+            api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
+            $('#notFoundText').fadeOut(0);
+            xhr.abort(); //Stop previous ajax execution
+            ajaxCall();
+            refreshAvailable = false;
+            setTimeout(()=>{
+                refreshAvailable = true;
+            },1000) //Allow refresh 1 per second
+        }
+    });
+
+    //Refresh
+    $('#search-form-container i').on('click', function () {
+        let refreshIcon = $('#search-form-container i');
+        if(refreshAvailable){
+            xhr.abort();
+            ajaxCall();
+            rotateRefreshIcon(refreshIcon);
+            refreshAvailable = false;
+            setTimeout(()=>{
+                refreshAvailable = true;
+            },1000) //Allow refresh 1 per second
+        }
+    });
+
+    //Ajax loading logo
+    $(document).ajaxStart(function () {
+        let dataContainers = $('.data');
+        for (let i = 0; i < dataContainers.length; i++) {
+            dataContainers[i].innerHTML = '...';
+        }
+        $('#most-played').hide();
+        $('#legend-container').hide();
+        $('#loading').show();
+    }).ajaxStop(function () {
+        $('#loading').hide();
+        if(xhr.status === 404){
+            $('#notFoundText').fadeIn();
+        }
+        else{
+            $('#legend-container').css("display", "flex")
+                .hide() //We hide first to be able to get the fadein animation
+                .fadeIn();
+
+            $('#most-played').css("display", "flex")
+                .hide() //We hide first to be able to get the fadein animation
+                .fadeIn();
+        }
+    });
 
     //To ouptut an object into a json file
     /*function download(content, fileName, contentType) {

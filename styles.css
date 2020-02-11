@@ -9,12 +9,13 @@ body,html, .wrapper{
     text-align: center;
     color: #333234;
     overflow: hidden;
+    font-weight: 300;
 }
 
 .wrapper{
     position: fixed;
 }
-html{
+body{
     background-image:url("http://hdqwalls.com/wallpapers/apex-legends-season-3-ws.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -79,7 +80,7 @@ section {
     padding: 50px 0;
 }
 #legend-container{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -130,18 +131,18 @@ footer{
     height: 40px;
     width: 97%;
 }
-footer .fa{
+footer i{
     color: black;
     font-size: 1.2rem;
 }
 #refresh-time{
+    font-weight: 400;
     padding-right: 1rem;
 }
 #loading{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 90px;
 }
 #loading-logo{
     margin-right: 5px;
@@ -207,6 +208,42 @@ footer .fa{
     width: 100px;
     height: 55px;
     margin-top: 0.5rem;
+}
+
+#search-form-container{
+    position: absolute;
+    top: 8rem;
+    left: 50%;
+    margin-left: -13rem;
+    z-index: 1;
+}
+
+.search-form{
+    background: none;
+    border: none;
+    border-bottom: 1px solid gray !important;
+    border-radius: 0;
+}
+input.search-form{
+    box-shadow: none !important;
+    background: none !important;
+    outline: none;
+    width: 400px;
+}
+.timezone{
+    font-size: .8rem;
+    font-weight: 300;
+    color: #464646;
+}
+
+#notFoundText{
+    color: #cd3233;
+    display: none;
+}
+
+#search-form-container i{
+    font-size: 1.5rem;
+    transition: 1s;
 }
 
 
@@ -280,6 +317,7 @@ footer .fa{
         margin-right:30px;
     }
     #loading{
+        display: none;
         margin-left: 10px;
     }
     #loading-text{
