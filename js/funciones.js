@@ -5,6 +5,7 @@ $( document ).ready(function() {
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
+    let viewPortHeight = 0;
 
 
     //Proxies
@@ -269,6 +270,7 @@ $( document ).ready(function() {
     //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
     searchForm.focusin(function() {
         if($( window ).width() < 400){
+            viewPortHeight = $( window ).height();
             $('.cards-container').css('visibility', 'hidden');
         }
     });
@@ -281,7 +283,7 @@ $( document ).ready(function() {
         }
     });
     $( window ).resize(function() {
-        if($( window ).width() < 400){
+        if($( window ).width() < 400 && viewPortHeight < $(window).height() && searchForm.is(":focus")){
             $('.cards-container')
                 .hide()
                 .fadeIn()
