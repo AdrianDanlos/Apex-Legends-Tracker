@@ -268,12 +268,12 @@ $( document ).ready(function() {
 
     //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
     searchForm.focusin(function() {
-        if($( window ).width() < 400){
+        if($( window ).height() < 400){
             $('.cards-container').css('visibility', 'hidden');
         }
     });
     searchForm.focusout(function() {
-        if($( window ).width() < 400){
+        if($( window ).height() < 400){
             $('.cards-container')
                 .hide()
                 .fadeIn()
