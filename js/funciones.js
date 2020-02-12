@@ -280,16 +280,13 @@ $( document ).ready(function() {
                 .css('visibility', 'visible');
         }
     });
-    $(document).on('keydown', function(e) {
-        alert(e.key)
-        alert(e.keyCode)
-            if($( window ).height() < 400){
-                $('.cards-container')
-                    .hide()
-                    .fadeIn()
-                    .css('visibility', 'visible');
-            }
-
+    $( window ).resize(function() {
+        if($( window ).width() < 400){
+            $('.cards-container')
+                .hide()
+                .fadeIn()
+                .css('visibility', 'visible');
+        }
     });
 
     //Refresh
