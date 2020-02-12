@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="container">
+        <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-end justify-content-lg-around my-0 mx-auto">
             <div id="legend">
                 <div id="loading">
                     <img id="loading-logo" src="img/loading.png" alt="">
@@ -49,12 +49,23 @@
 
             <!-- Search form -->
             <div id="search-form-container" class="md-form mt-0 d-flex align-items-center">
-                <i class="fas fa-sync-alt"></i>
+                <i class="fas fa-sync-alt" data-toggle="tooltip" title="Refresh"></i>
                 <input class="form-control search-form" type="text" placeholder="Search for a player" aria-label="Search">
             </div>
 
+            <!-- Tooltip container -->
+            <div id="tooltip-container">
+                <a href="https://github.com/AdrianDanlos/ApexLegends" target="_blank">
+                    <button type="button" class="d-flex align-items-center btn btn-secondary" data-toggle="tooltip" title="The API can only read data from in-game banners. Make sure to equip them in each of your legends. Easy step by step guide in the documentation.">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="mx-2">My data doesn't seem to be accurate</span>
+                        <i class="fab fa-github"></i>
+                    </button>
+                </a>
+            </div>
+
             <!--Cards row-->
-            <div class="row w-100 d-flex justify-content-center">
+            <div class="row cards-container w-100 d-flex justify-content-end justify-content-lg-center align-items-center flex-column flex-lg-row">
                 <section class="col-md-3 mx-2" id="kills">
                     <div class="title">
                         <div class="decorator-container">
@@ -104,5 +115,8 @@
             </footer>
         </div>
     </div>
+    <!--BOOTSTRAP-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

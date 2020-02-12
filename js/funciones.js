@@ -1,14 +1,20 @@
 $( document ).ready(function() {
-    let myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
+    const myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
     let playerAccount = myAccounts;
     let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
-    let key = 'LPuQwxrvLY7hspWf1eST';
+    const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
+
 
     //Proxies
     //https://secret-ocean-49799.herokuapp.com/
     //https://cors-anywhere.herokuapp.com/
+
+    //Activate tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
     //Get Ranks from JSON
     let ranks;
@@ -23,7 +29,7 @@ $( document ).ready(function() {
         "data-fill": "blue"
     });
 
-    //First call
+    //First call on load
     ajaxCall();
 
 

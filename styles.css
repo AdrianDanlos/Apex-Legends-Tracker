@@ -8,7 +8,6 @@ body,html, .wrapper{
     font-family: Roboto, serif;
     text-align: center;
     color: #333234;
-    overflow: hidden;
     font-weight: 300;
 }
 
@@ -30,12 +29,8 @@ a{
     text-decoration: none;
 }
 .container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     height: 100%;
     max-width: 1400px;
-    margin:0 auto;
 }
 
 .container section{
@@ -131,7 +126,7 @@ footer{
     height: 40px;
     width: 97%;
 }
-footer i{
+.fa-github{
     color: black;
     font-size: 1.2rem;
 }
@@ -159,7 +154,7 @@ footer i{
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-    width: 10%;
+    width: 195px;
     display: none;
     flex-direction: column;
 }
@@ -210,12 +205,27 @@ footer i{
     margin-top: 0.5rem;
 }
 
-#search-form-container{
+#search-form-container, #tooltip-container{
     position: absolute;
-    top: 8rem;
     left: 50%;
-    margin-left: -13rem;
     z-index: 1;
+}
+#search-form-container{
+    top: 8rem;
+    margin-left: -13rem;
+}
+#tooltip-container{
+    top: 12rem;
+    margin-left: -8.6rem;
+}
+
+#tooltip-container a{
+    text-decoration: none;
+}
+
+#tooltip-container .btn{
+    font-size: .8rem;
+    font-weight: 300;
 }
 
 .search-form{
@@ -228,7 +238,7 @@ input.search-form{
     box-shadow: none !important;
     background: none !important;
     outline: none;
-    width: 400px;
+    width: 390px;
 }
 .timezone{
     font-size: .8rem;
@@ -248,6 +258,7 @@ input.search-form{
 
 
 
+
 /*loading animation*/
 @keyframes loading {
     to {
@@ -259,19 +270,29 @@ input.search-form{
 }
 
 /*Media Queries*/
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
+    #most-played{
+        margin-bottom: -12rem;
+        position: static;
+    }
+}
+
+
+@media only screen and (max-width: 991px) {
     body{
         width: 100%;
         font-size: 12px;
     }
     .container{
-        flex-direction: column;
         height: 100vh;
     }
     .container section{
         justify-content: center;
+        height: 150px;
         width: 50vw;
-        height: 500px;
+    }
+    .cards-container{
+        height: 100vh;
     }
     footer, #legend{
         justify-content: center;
@@ -301,14 +322,11 @@ input.search-form{
     .decorator-container{
         display: none;
     }
-    #rankPercentage, #apex-logo-container, #most-played{
+    #rankPercentage, #apex-logo-container{
         display: none !important;
     }
     #legend-container{
         padding: 40px 0;
-    }
-    #kills{
-        margin-top: 16%;
     }
     #online-logo{
         margin-left: 5px;
@@ -322,5 +340,14 @@ input.search-form{
     }
     #loading-text{
         white-space: nowrap;
+    }
+    body, html, .wrapper{
+        overflow-x: hidden;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    #most-played{
+        width: 170px;
     }
 }
