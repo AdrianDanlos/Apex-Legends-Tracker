@@ -268,7 +268,7 @@ $( document ).ready(function() {
 
     //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
     searchForm.focusin(function() {
-        if($( window ).height() < 400){
+        if($( window ).width() < 400){
             $('.cards-container').css('visibility', 'hidden');
         }
     });
@@ -278,6 +278,16 @@ $( document ).ready(function() {
                 .hide()
                 .fadeIn()
                 .css('visibility', 'visible');
+        }
+    });
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Backspace') {
+            if($( window ).height() < 400){
+                $('.cards-container')
+                    .hide()
+                    .fadeIn()
+                    .css('visibility', 'visible');
+            }
         }
     });
 
