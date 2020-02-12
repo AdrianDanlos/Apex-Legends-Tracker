@@ -276,6 +276,14 @@ input.search-form{
         opacity: 0.9;
         z-index: 1;
     }
+    .title{
+        padding-top: 10px;
+        font-size: 23px;
+    }
+    .data{
+        padding-bottom: 10px;
+        font-size: 23px;
+    }
 }
 
 
@@ -292,9 +300,6 @@ input.search-form{
         height: 130px;
         width: 50vw;
     }
-    .cards-container{
-        height: 100vh;
-    }
     footer, #legend{
         justify-content: center;
         width: 100%;
@@ -302,22 +307,16 @@ input.search-form{
         left:0;
         font-weight: 300;
     }
-    #kills{
-        justify-content: flex-end;
-    }
-    #top3{
-        justify-content: flex-start;
-    }
     .rank-logo{
         margin-right: 0;
     }
     .title{
         padding-top: 10px;
-        font-size: 25px;
+        font-size: 30px;
     }
     .data{
         padding-bottom: 10px;
-        font-size: 25px;
+        font-size: 30px;
     }
     .decorator-container{
         display: none;
