@@ -283,7 +283,7 @@ $( document ).ready(function() {
         }
     });
     $( window ).resize(function() {
-        alert($(window).height())
+        $('body').append(`<h1>${$(window).height()}</h1>`)
         if($( window ).width() < 400 && viewPortHeight < $(window).height() && searchForm.is(":focus")){
             $('.cards-container')
                 .hide()
