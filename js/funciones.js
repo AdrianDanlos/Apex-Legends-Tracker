@@ -274,7 +274,10 @@ $( document ).ready(function() {
     });
     searchForm.focusout(function() {
         if($( window ).width() < 400){
-            $('.cards-container').css('visibility', 'visible');
+            $('.cards-container')
+                .hide()
+                .fadeIn()
+                .css('visibility', 'visible');
         }
     });
 
