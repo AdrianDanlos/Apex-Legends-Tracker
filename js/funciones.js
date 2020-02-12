@@ -6,22 +6,7 @@ $( document ).ready(function() {
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
 
-    'use strict';
 
-    var orientationChange = function () {
-        var $element = $('.selector');
-        $element.css('height', '100vh'); // Change this to your own original vh value.
-        $element.css('height', $element.height() + 'px');
-    };
-
-    var s = screen;
-    var o = s.orientation || s.msOrientation || s.mozOrientation;
-    o.addEventListener('change', function () {
-        setTimeout(function () {
-            orientationChange();
-        }, 250);
-    }, false);
-    orientationChange();
     //Proxies
     //https://secret-ocean-49799.herokuapp.com/
     //https://cors-anywhere.herokuapp.com/
@@ -261,10 +246,12 @@ $( document ).ready(function() {
 
     //----EVENTS----
 
+    let searchForm = $(".search-form");
+
     //Search for player on ENTER keypress
-    $(".search-form").on('keyup', function (e) {
+    searchForm.on('keyup', function (e) {
         if (e.key === 'Enter' && refreshAvailable) {
-            playerAccount = $(".search-form").val();
+            playerAccount = $(this).val();
             if(playerAccount === 'N3Essential'){
                 playerAccount = myAccounts
             }
@@ -276,6 +263,18 @@ $( document ).ready(function() {
             setTimeout(()=>{
                 refreshAvailable = true;
             },1000) //Allow refresh 1 per second
+        }
+    });
+
+    //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
+    searchForm.focusin(function() {
+        if($( window ).width() < 400){
+            $('.cards-container').css('visibility', 'hidden');
+        }
+    });
+    searchForm.focusout(function() {
+        if($( window ).width() < 400){
+            $('.cards-container').css('visibility', 'visible');
         }
     });
 
@@ -292,6 +291,7 @@ $( document ).ready(function() {
             },1000) //Allow refresh 1 per second
         }
     });
+
 
     //Ajax loading logo
     $(document).ajaxStart(function () {
