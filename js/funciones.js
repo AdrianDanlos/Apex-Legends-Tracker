@@ -281,14 +281,15 @@ $( document ).ready(function() {
         }
     });
     $(document).on('keydown', function(e) {
-        if (e.key === 'Backspace') {
+        alert(e.key)
+        alert(e.keyCode)
             if($( window ).height() < 400){
                 $('.cards-container')
                     .hide()
                     .fadeIn()
                     .css('visibility', 'visible');
             }
-        }
+
     });
 
     //Refresh

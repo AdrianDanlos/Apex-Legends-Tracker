@@ -331,6 +331,9 @@ input.search-form{
     input.search-form{
         width: 95%;
     }
+    #most-played{
+        width: 150px;
+    }
 }
 @media only screen and (max-width: 768px) {
     #most-played{
