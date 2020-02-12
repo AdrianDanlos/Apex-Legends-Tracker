@@ -207,16 +207,13 @@ footer{
 
 #search-form-container, #tooltip-container{
     position: absolute;
-    left: 50%;
     z-index: 1;
 }
 #search-form-container{
     top: 8rem;
-    margin-left: -13rem;
 }
 #tooltip-container{
     top: 12rem;
-    margin-left: -8.6rem;
 }
 
 #tooltip-container a{
@@ -275,6 +272,10 @@ input.search-form{
         margin-bottom: -12rem;
         position: static;
     }
+    #most-played span{
+        opacity: 0.9;
+        z-index: 1;
+    }
 }
 
 
@@ -306,18 +307,17 @@ input.search-form{
     }
     #top3{
         justify-content: flex-start;
-        margin-bottom: 40px;
     }
     .rank-logo{
         margin-right: 0;
     }
     .title{
         padding-top: 10px;
-        font-size: 35px;
+        font-size: 25px;
     }
     .data{
         padding-bottom: 10px;
-        font-size: 35px;
+        font-size: 25px;
     }
     .decorator-container{
         display: none;
@@ -344,10 +344,13 @@ input.search-form{
     body, html, .wrapper{
         overflow-x: hidden;
     }
+    input.search-form{
+        width: 95%;
+    }
 }
 
 @media only screen and (max-width: 1450px) {
-    #most-played{
-        width: 170px;
-    }
+#most-played{
+    width: 170px;
+}
 }
