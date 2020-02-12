@@ -268,12 +268,7 @@ $( document ).ready(function() {
     });
 
     //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
-    searchForm.focusin(function() {
-        if($( window ).width() < 400){
-            viewPortHeight = $( window ).height();
-            $('.cards-container').css('visibility', 'hidden');
-        }
-    });
+
     searchForm.focusout(function() {
         if($( window ).width() < 400){
             $('.cards-container')
@@ -283,9 +278,15 @@ $( document ).ready(function() {
         }
     });
     $( window ).resize(function() {
-        $('body').append(`<h1>${$( window ).width() < 400}</h1>`)
+        $('body').append(`<h1>windowh</h1>`)
+        $('body').append(`<h1>${$(window).height()}</h1>`)
+        $('body').append(`<h1>viewporth</h1>`)
+        $('body').append(`<h1>${viewPortHeight}</h1>`)
+        $('body').append(`<h1>statement</h1>`)
         $('body').append(`<h1>${viewPortHeight < $(window).height()}</h1>`)
+        $('body').append(`<h1>isfocus</h1>`)
         $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
+        
         console.log(searchForm.is(":focus"))
         if($( window ).width() < 400 && viewPortHeight < $(window).height() && searchForm.is(":focus")){
             console.log("entro")
@@ -294,6 +295,13 @@ $( document ).ready(function() {
                 .hide()
                 .fadeIn()
                 .css('visibility', 'visible');
+        }
+    });
+
+    searchForm.focusin(function() {
+        if($( window ).width() < 400){
+            viewPortHeight = $( window ).height();
+            $('.cards-container').css('visibility', 'hidden');
         }
     });
 

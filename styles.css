@@ -332,7 +332,7 @@ input.search-form{
         width: 95%;
     }
     #most-played{
-        width: 150px;
+        width: 120px;
     }
 }
 @media only screen and (max-width: 768px) {
