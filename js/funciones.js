@@ -283,8 +283,10 @@ $( document ).ready(function() {
         }
     });
     $( window ).resize(function() {
-        $('body').append(`<h1>${$(window).height()}</h1>`)
+        $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
+        console.log(searchForm.is(":focus"))
         if($( window ).width() < 400 && viewPortHeight < $(window).height() && searchForm.is(":focus")){
+            console.log("entro")
             $('.cards-container')
                 .hide()
                 .fadeIn()
