@@ -275,7 +275,7 @@ $( document ).ready(function() {
         }
     });
     searchForm.focusout(function() {
-        if($( window ).height() < 400){
+        if($( window ).width() < 400){
             $('.cards-container')
                 .hide()
                 .fadeIn()
@@ -283,6 +283,7 @@ $( document ).ready(function() {
         }
     });
     $( window ).resize(function() {
+        alert($(window).height())
         if($( window ).width() < 400 && viewPortHeight < $(window).height() && searchForm.is(":focus")){
             $('.cards-container')
                 .hide()
