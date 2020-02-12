@@ -267,25 +267,11 @@ input.search-form{
 }
 
 /*Media Queries*/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1450px) {
     #most-played{
-        margin-bottom: -12rem;
-        position: static;
-    }
-    #most-played span{
-        opacity: 0.9;
-        z-index: 1;
-    }
-    .title{
-        padding-top: 10px;
-        font-size: 23px;
-    }
-    .data{
-        padding-bottom: 10px;
-        font-size: 23px;
+        width: 170px;
     }
 }
-
 
 @media only screen and (max-width: 991px) {
     body{
@@ -347,9 +333,25 @@ input.search-form{
         width: 95%;
     }
 }
+@media only screen and (max-width: 768px) {
+    #most-played{
+        margin-bottom: -12rem;
+        position: static;
+    }
+    #most-played span{
+        opacity: 0.9;
+        z-index: 1;
+    }
+    .title{
+        padding-top: 10px;
+        font-size: 23px;
+    }
+    .title .text {
+        width: 50%;
+    }
+    .data{
+        padding-bottom: 10px;
+        font-size: 23px;
+    }
+}
 
-@media only screen and (max-width: 1450px) {
-#most-played{
-    width: 170px;
-}
-}
