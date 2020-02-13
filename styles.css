@@ -191,17 +191,15 @@ footer{
     position: absolute;
     left: 1rem;
     top: 1rem;
-    width: 70px;
+    width: 130px;
     height: auto;
 }
 
-#apex-logo{
-    width: 100%;
+#apex-logo, #apex-typo{
+    width: 50%;
 }
 
 #apex-typo{
-    width: 100px;
-    height: 55px;
     margin-top: 0.5rem;
 }
 
@@ -338,7 +336,7 @@ input.search-form{
 }
 @media only screen and (max-width: 768px) {
     #most-played{
-        margin-bottom: -12rem;
+        margin-bottom: -8.5rem;
         position: static;
     }
     #most-played span{
