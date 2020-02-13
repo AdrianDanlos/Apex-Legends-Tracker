@@ -360,5 +360,8 @@ input.search-form{
         padding-bottom: 10px;
         font-size: 23px;
     }
+    section {
+        justify-content: flex-start;
+    }
 }
 

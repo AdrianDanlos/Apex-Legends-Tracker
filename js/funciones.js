@@ -276,7 +276,6 @@ $( document ).ready(function() {
             }, 500);
 
             $('.cards-container').css('visibility', 'hidden');
-            $('#most-played').css('visibility', 'hidden');
         }
     });
 
@@ -294,11 +293,6 @@ $( document ).ready(function() {
 
     function displayViewOnKeyboardOut(){
         $('.cards-container')
-            .hide()
-            .fadeIn()
-            .css('visibility', 'visible');
-
-        $('#most-played')
             .hide()
             .fadeIn()
             .css('visibility', 'visible');
