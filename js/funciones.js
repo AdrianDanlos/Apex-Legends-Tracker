@@ -300,7 +300,10 @@ $( document ).ready(function() {
 
     searchForm.focusin(function() {
         if($( window ).width() < 400){
-            viewPortHeight = $( window ).height();
+            setTimeout(()=>{
+                viewPortHeight = $( window ).height();
+            }, 500)
+
             $('.cards-container').css('visibility', 'hidden');
         }
     });
