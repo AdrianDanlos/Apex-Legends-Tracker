@@ -284,7 +284,6 @@ input.search-form{
         height: 100vh;
     }
     .container section{
-        justify-content: center;
         height: 130px;
         width: 50vw;
     }
