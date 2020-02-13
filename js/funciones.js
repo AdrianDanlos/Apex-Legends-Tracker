@@ -130,10 +130,10 @@ $( document ).ready(function() {
         $('#current-rank-logo').attr('src', datosRanking[3]);
         //Online status up
         if(online){
-            $('#online-logo').attr('src', 'img/online.png');
+            $('#online-logo').attr('src', 'assets/online.png');
         }
         else{
-            $('#online-logo').attr('src', 'img/offline.png');
+            $('#online-logo').attr('src', 'assets/offline.png');
         }
         //Percentage left
         bar.set(
@@ -229,7 +229,7 @@ $( document ).ready(function() {
                 }
             }
             else{
-                return "img/unknown.png";
+                return "assets/unknown.png";
             }
         }
         console.log(favouriteLegend);
