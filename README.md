@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/readme.jpg" alt="LANDING"/>
+    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/landing-photo.jpg" alt="LANDING"/>
 </p>
 
 
