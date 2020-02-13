@@ -269,35 +269,6 @@ $( document ).ready(function() {
 
     //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
 
-    searchForm.focusout(function() {
-        if($( window ).width() < 400){
-            $('.cards-container')
-                .hide()
-                .fadeIn()
-                .css('visibility', 'visible');
-        }
-    });
-    $( window ).resize(function() {
-        $('body').append(`<h1>windowh</h1>`)
-        $('body').append(`<h1>${$(window).height()}</h1>`)
-        $('body').append(`<h1>viewporth</h1>`)
-        $('body').append(`<h1>${viewPortHeightOnFocus}</h1>`)
-        $('body').append(`<h1>statement</h1>`)
-        $('body').append(`<h1>${viewPortHeightOnFocus < $(window).height()}</h1>`)
-        $('body').append(`<h1>isfocus</h1>`)
-        $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
-
-        console.log(searchForm.is(":focus"))
-        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
-            console.log("entro")
-            $('body').append(`<h1>ENTROOOOOOO</h1>`)
-            $('.cards-container')
-                .hide()
-                .fadeIn()
-                .css('visibility', 'visible');
-        }
-    });
-
     searchForm.on('click', function() {
         if($( window ).width() < 400){
             setTimeout(()=>{
@@ -307,6 +278,26 @@ $( document ).ready(function() {
             $('.cards-container').css('visibility', 'hidden');
         }
     });
+
+    searchForm.focusout(function() {
+        if($( window ).width() < 400){
+            $('.cards-container')
+                .hide()
+                .fadeIn()
+                .css('visibility', 'visible');
+        }
+    });
+    
+    $( window ).resize(function() {
+        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
+            $('.cards-container')
+                .hide()
+                .fadeIn()
+                .css('visibility', 'visible');
+        }
+    });
+
+
 
     //Refresh
     $('#search-form-container i').on('click', function () {
