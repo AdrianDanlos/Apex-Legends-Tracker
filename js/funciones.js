@@ -5,7 +5,7 @@ $( document ).ready(function() {
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
-    let viewPortHeightOnFocus = 0;
+    let viewPortHeightOnFocus = 1000; //Max height value for mobiles height
 
 
     //Proxies
