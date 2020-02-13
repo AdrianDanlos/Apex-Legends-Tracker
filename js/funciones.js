@@ -288,7 +288,7 @@ $( document ).ready(function() {
         $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
 
         console.log(searchForm.is(":focus"))
-        if($(window).width() < 400 && viewPortHeightOnFocus <= $(window).height() && searchForm.is(":focus")){
+        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
             console.log("entro")
             $('body').append(`<h1>ENTROOOOOOO</h1>`)
             $('.cards-container')
