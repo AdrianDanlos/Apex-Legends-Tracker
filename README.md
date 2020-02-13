@@ -34,11 +34,11 @@ Nonetheless, there is not an Apex Legends official API yet, so we have to work w
 In order for the API to get players data, in-game banners must be added to each legend.
 
 - STEP 1: Equip the following banners in one of your legends: Kills, Wins & Top3.
-- STEP 2: Refresh
-<p align="center">
-    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/search.png" alt="logo" width="300" height="300"/>
-</p> 
-- STEP 3: Repeat this for each legend
+- STEP 2: Refresh your profile in <a href="https://apex-opgg.herokuapp.com/" target="_blank">ApexOPGG</a>
+
+    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/search.png" alt="logo" width="400" height="55"/>
+
+- STEP 3: Repeat STEP 1 and 2 for each legend
 
 CONGRATS! Your stats have been registered and will be automatically updated in the future!
 
