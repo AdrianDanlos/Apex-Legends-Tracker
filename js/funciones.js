@@ -5,7 +5,7 @@ $( document ).ready(function() {
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
-    let viewPortHeight = 0;
+    let viewPortHeightOnFocus = 0;
 
 
     //Proxies
@@ -281,14 +281,14 @@ $( document ).ready(function() {
         $('body').append(`<h1>windowh</h1>`)
         $('body').append(`<h1>${$(window).height()}</h1>`)
         $('body').append(`<h1>viewporth</h1>`)
-        $('body').append(`<h1>${viewPortHeight}</h1>`)
+        $('body').append(`<h1>${viewPortHeightOnFocus}</h1>`)
         $('body').append(`<h1>statement</h1>`)
-        $('body').append(`<h1>${viewPortHeight < $(window).height()}</h1>`)
+        $('body').append(`<h1>${viewPortHeightOnFocus < $(window).height()}</h1>`)
         $('body').append(`<h1>isfocus</h1>`)
         $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
 
         console.log(searchForm.is(":focus"))
-        if($( window ).width() < 400 && viewPortHeight > $(window).height() && searchForm.is(":focus")){
+        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
             console.log("entro")
             $('body').append(`<h1>ENTROOOOOOO</h1>`)
             $('.cards-container')
@@ -301,7 +301,7 @@ $( document ).ready(function() {
     searchForm.focusin(function() {
         if($( window ).width() < 400){
             setTimeout(()=>{
-                viewPortHeight = $( window ).height();
+                viewPortHeightOnFocus = $( window ).height();
             }, 500)
 
             $('.cards-container').css('visibility', 'hidden');
