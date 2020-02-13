@@ -271,9 +271,9 @@ $( document ).ready(function() {
 
     searchForm.on('click', function() {
         if($( window ).width() < 400){
-            setTimeout(()=>{
+
                 viewPortHeightOnFocus = $( window ).height();
-            }, 500)
+      
 
             $('.cards-container').css('visibility', 'hidden');
         }
@@ -287,7 +287,7 @@ $( document ).ready(function() {
                 .css('visibility', 'visible');
         }
     });
-    
+
     $( window ).resize(function() {
         if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
             $('.cards-container')
