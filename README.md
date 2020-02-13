@@ -1,6 +1,6 @@
 # APEX LEGENDS OPGG
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/apexlogo.png" alt="logo" width="300" height="300"/>
+    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/apexlogo.png" alt="logo" width="300" height="300"/>
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/landing-photo.jpg" alt="LANDING"/>
+    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/landing-photo.jpg" alt="LANDING"/>
 </p>
 
 
@@ -36,7 +36,7 @@ In order for the API to get players data, in-game banners must be added to each 
 - STEP 1: Equip the following banners in one of your legends: Kills, Wins & Top3.
 - STEP 2: Refresh your profile in <a href="https://apex-opgg.herokuapp.com/" target="_blank">ApexOPGG</a>
 
-    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/img/search.png" alt="logo" width="400" height="55"/>
+    <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/search.png" alt="logo" width="400" height="55"/>
 
 - STEP 3: Repeat STEP 1 and 2 for each legend
 
