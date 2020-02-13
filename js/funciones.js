@@ -1,12 +1,11 @@
 $( document ).ready(function() {
     const myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul';
-    let playerAccount = myAccounts;
+    let playerAccount = 'HeyImLifeline'; //wizard_of_gore
     let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
     let viewPortHeightOnFocus = 1000; //Max height value for mobiles height
-
 
     //Proxies
     //https://secret-ocean-49799.herokuapp.com/
@@ -180,14 +179,26 @@ $( document ).ready(function() {
         let rankName = getCurrentRankName(result);
         let rankDivision = getCurrentRankDivision(result);
         if(rankDivision === 1){ //Make jump from leagues
-            let indexOfCurrentRank = ranks.findIndex(item => item.rank === rankName); //Gets the index of the element that has the rankName passed
-            rankName = ranks[indexOfCurrentRank + 1];
-            rankDivision = 4;
+            switch (rankName) {
+                case 'diamond':
+                    rankName = 'master';
+                    rankDivision = "";
+                break;
+                case 'master':
+                    rankName = 'apexpredator';
+                    rankDivision = "";
+                break;
+                default:
+                    let indexOfCurrentRank = ranks.findIndex(item => item.rank === rankName); //Gets the index of the element that has the rankName passed
+                    rankName = ranks[indexOfCurrentRank + 1].rank;
+                    rankDivision = 4;
+                break;
+            }
         }
         else{
             rankDivision -= 1;
         }
-        return `http://api.apexlegendsstatus.com/assets/ranks/${rankName + rankDivision}.png`;
+        return `assets/ranks/${rankName + rankDivision}.png`;
     }
 
     function getNextDivisionStartingRP(result) {
@@ -209,7 +220,8 @@ $( document ).ready(function() {
     }
 
     function getCurrentRankDivision(result) {
-        return result[0]['global']['rank']['rankDiv']; //We get the next rankDivision
+        console.log(result[0]['global']['rank']['rankDiv'])
+        return result[0]['global']['rank']['rankDiv'];
     }
 
     function getGapBetweenDivisions(result) {
@@ -218,7 +230,6 @@ $( document ).ready(function() {
 
     function getFavouriteLegend(result) {
         let allLegendsObject = result[0]['legends']['all'];
-
         let favouriteLegend;
         let highestKills = 0;
         for (let key in allLegendsObject) {
@@ -228,12 +239,12 @@ $( document ).ready(function() {
                     favouriteLegend = key;
                 }
             }
-            else{
-                return "assets/unknown.png";
-            }
         }
-        console.log(favouriteLegend);
-        return `http://api.apexlegendsstatus.com/assets/icons/${favouriteLegend.toLowerCase()}.png`;
+
+        if(favouriteLegend){
+            return `http://api.apexlegendsstatus.com/assets/icons/${favouriteLegend.toLowerCase()}.png`;
+        }
+        return 'assets/unknown.png'
     }
 
     function rotateRefreshIcon(refreshIcon){
@@ -253,8 +264,8 @@ $( document ).ready(function() {
     searchForm.on('keyup', function (e) {
         if (e.key === 'Enter' && refreshAvailable) {
             playerAccount = $(this).val();
-            if(playerAccount === 'N3Essential'){
-                playerAccount = myAccounts
+            if(playerAccount.toLowerCase() === 'n3essential'){
+                playerAccount = myAccounts;
             }
             api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
             $('#notFoundText').fadeOut(0);
