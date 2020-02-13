@@ -220,7 +220,6 @@ $( document ).ready(function() {
     }
 
     function getCurrentRankDivision(result) {
-        console.log(result[0]['global']['rank']['rankDiv'])
         return result[0]['global']['rank']['rankDiv'];
     }
 
