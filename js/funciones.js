@@ -288,7 +288,7 @@ $( document ).ready(function() {
         $('body').append(`<h1>${searchForm.is(":focus")}</h1>`)
 
         console.log(searchForm.is(":focus"))
-        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
+        if($(window).width() < 400 && viewPortHeightOnFocus <= $(window).height() && searchForm.is(":focus")){
             console.log("entro")
             $('body').append(`<h1>ENTROOOOOOO</h1>`)
             $('.cards-container')
@@ -298,7 +298,7 @@ $( document ).ready(function() {
         }
     });
 
-    searchForm.focusin(function() {
+    searchForm.on('click', function() {
         if($( window ).width() < 400){
             setTimeout(()=>{
                 viewPortHeightOnFocus = $( window ).height();
