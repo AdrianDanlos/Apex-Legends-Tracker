@@ -254,8 +254,6 @@ input.search-form{
 }
 
 
-
-
 /*loading animation*/
 @keyframes loading {
     to {
@@ -266,7 +264,11 @@ input.search-form{
     animation: loading 1s infinite;
 }
 
+
+
+
 /*Media Queries*/
+
 @media only screen and (max-width: 1450px) {
     #most-played{
         width: 170px;
@@ -343,6 +345,9 @@ input.search-form{
     #most-played span{
         opacity: 0.9;
         z-index: 1;
+    }
+    #most-played span i{
+        position: static;
     }
     .title{
         padding-top: 10px;

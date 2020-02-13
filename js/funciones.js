@@ -267,35 +267,42 @@ $( document ).ready(function() {
         }
     });
 
-    //Hide cards container on mobile when keyboard is displayed to avoid browser resizing messing up our view
+    //MOBILE-> Hide cards containerwhen keyboard is displayed to avoid browser resizing messing up our view
 
     searchForm.on('click', function() {
         if($( window ).width() < 400){
-
+            setTimeout(()=>{ //Wait for mobile keyboard to deploy. Then get height
                 viewPortHeightOnFocus = $( window ).height();
-      
+            }, 500);
 
             $('.cards-container').css('visibility', 'hidden');
+            $('#most-played').css('visibility', 'hidden');
         }
     });
 
     searchForm.focusout(function() {
         if($( window ).width() < 400){
-            $('.cards-container')
-                .hide()
-                .fadeIn()
-                .css('visibility', 'visible');
+            displayViewOnKeyboardOut();
+        }
+    });
+    
+    $( window ).resize(function() {
+        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
+            displayViewOnKeyboardOut();
         }
     });
 
-    $( window ).resize(function() {
-        if($(window).width() < 400 && viewPortHeightOnFocus < $(window).height() && searchForm.is(":focus")){
-            $('.cards-container')
-                .hide()
-                .fadeIn()
-                .css('visibility', 'visible');
-        }
-    });
+    function displayViewOnKeyboardOut(){
+        $('.cards-container')
+            .hide()
+            .fadeIn()
+            .css('visibility', 'visible');
+
+        $('#most-played')
+            .hide()
+            .fadeIn()
+            .css('visibility', 'visible');
+    }
 
 
 
