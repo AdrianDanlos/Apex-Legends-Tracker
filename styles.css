@@ -244,6 +244,7 @@ input.search-form{
 #notFoundText{
     color: #cd3233;
     display: none;
+    font-weight: 400;
 }
 
 #search-form-container i{
@@ -270,6 +271,7 @@ input.search-form{
 @media only screen and (max-width: 1450px) {
     #most-played{
         width: 170px;
+        margin-top: 1rem;
     }
 }
 
@@ -332,10 +334,6 @@ input.search-form{
     }
     #most-played{
         width: 110px;
-    }
-}
-@media only screen and (max-width: 768px) {
-    #most-played{
         margin-bottom: -8.5rem;
         position: static;
     }
@@ -346,6 +344,8 @@ input.search-form{
     #most-played span i{
         position: static;
     }
+}
+@media only screen and (max-width: 768px) {
     .title{
         padding-top: 10px;
         font-size: 23px;
@@ -359,6 +359,9 @@ input.search-form{
     }
     section {
         justify-content: flex-start;
+    }
+    #most-played{
+        margin-top: 0;
     }
 }
 
