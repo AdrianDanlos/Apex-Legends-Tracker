@@ -25,7 +25,9 @@
 
 
 ## Overview
-The aim of this project is to provide an Apex Legends statistic tracker for all the players who would like to keep track of their in-game stats. It is build on top of an Apex unnoficial API.
+The aim of this project is to provide an Apex Legends statistic tracker for all the players who would like to keep track of their in-game stats. 
+
+Built on top of an Apex unnoficial API.
 
 ## How to display my data 
 In order for the API to get players data, in-game banners must be added to each legend.
