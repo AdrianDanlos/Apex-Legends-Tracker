@@ -1,4 +1,4 @@
-# APEX LEGENDS OPGG
+<h1 align="center">APEX LEGENDS OPGG</h1>
 <p align="center">
     <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/apexlogo.png" alt="logo" width="300" height="300"/>
 </p>
@@ -25,10 +25,9 @@
 
 
 ## Overview
-The aim of this project is to provide an Apex Legends statistic tracker for all the players who would like to keep track of their in-game stats.
+The aim of this project is to provide an Apex Legends statistic tracker for all the players who would like to keep track of their in-game stats. 
 
-Nonetheless, there is not an Apex Legends official API yet, so we have to work with unnoficial API's that, despite being very welcomed by the community do have some limitations.
-
+Built on top of an Apex unnoficial API.
 
 ## How to display my data 
 In order for the API to get players data, in-game banners must be added to each legend.
