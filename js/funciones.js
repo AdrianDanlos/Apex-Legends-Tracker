@@ -6,6 +6,7 @@ $( document ).ready(function() {
     let xhr; //AjaxCall Object
     let refreshAvailable = true;
     let viewPortHeightOnFocus = 1000; //Max height value for mobiles height
+    let isApexPredator;
 
     //Proxies
     //https://secret-ocean-49799.herokuapp.com/
@@ -43,6 +44,7 @@ $( document ).ready(function() {
                     result = [result];
                 }
                 console.log(result);
+                isApexPredator = result[0]['global']['rank']['rankName'] === 'Apex Predator';
                 let online = isOnline(result);
                 let datosRanking = getRanking(result);
                 let datosTotales = sumarDatos(result);
@@ -134,18 +136,25 @@ $( document ).ready(function() {
         else{
             $('#online-logo').attr('src', 'assets/offline.png');
         }
-        //Percentage left
-        bar.set(
-            Math.floor(percentageToNextRank),     /* target value. */
-            true   /* enable animation. default is true */
-        );
-        $('#rankPercentage').css('display', 'flex');
-        $('.baseline')[0].attr('stroke', 'white');
-        $('.myBar').css('display', 'block');
 
-        //Next rank logo
-        $('#next-rank-logo').attr('src', nextRankLogoUrl);
+        //If he is not apex predator we render % and next rank logo
+        if(!isApexPredator){
+            //Percentage left
+            bar.set(
+                Math.floor(percentageToNextRank),     /* target value. */
+                true   /* enable animation. default is true */
+            );
+            $('#rankPercentage').css('display', 'flex');
+            $('.baseline')[0].attr('stroke', 'white');
+            $('.myBar').css('display', 'block');
 
+            //Next rank logo
+            $('#next-rank-logo').attr('src', nextRankLogoUrl);
+        }
+        else{
+            $('#rankPercentage').css('display', 'none');
+            $('.myBar').css('display', 'none');
+        }
         //Favorite legend banner
         $('#most-played img').attr('src', favouriteLegendUrl);
         $('#most-played').css('display', 'flex');
@@ -178,7 +187,7 @@ $( document ).ready(function() {
     function getNextRankLogo(result) {
         let rankName = getCurrentRankName(result);
         let rankDivision = getCurrentRankDivision(result);
-        if(rankDivision === 1){ //Make jump from leagues
+        if(rankDivision === 1 && !isApexPredator){ //Make jump from leagues
             switch (rankName) {
                 case 'diamond':
                     rankName = 'master';
