@@ -1,6 +1,6 @@
 $( document ).ready(function() {
-    const myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul,thephilipinesoul';
-    let playerAccount = 'HeyImLifeline'; //wizard_of_gore
+    const myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul,thephilipinesoul,themyanmarsoul';
+    let playerAccount = 'thekoreansoul'; //wizard_of_gore
     let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
