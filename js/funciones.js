@@ -15,7 +15,7 @@ $( document ).ready(function() {
     //Activate tooltips
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
 
     //Get Ranks from JSON
     let ranks;
@@ -55,7 +55,7 @@ $( document ).ready(function() {
                 visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
             },
             error: function (error) {
-                console.log('----ERROR----')
+                console.log('----ERROR----');
                 if(error.status === 404){
                     $('#notFoundText').fadeIn();
                 }
@@ -164,13 +164,9 @@ $( document ).ready(function() {
     function romanize(number) {
         switch (number) {
             case 1: return 'I';
-                break;
             case 2: return 'II';
-                break;
             case 3: return 'III';
-                break;
             case 4: return 'IV';
-                break;
         }
     }
 
