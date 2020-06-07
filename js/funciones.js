@@ -246,7 +246,7 @@ $( document ).ready(function() {
         }
 
         if(favouriteLegend){
-            return `http://api.apexlegendsstatus.com/assets/icons/${favouriteLegend.toLowerCase()}.png`;
+            return `https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-${favouriteLegend.toLowerCase()}.png`
         }
         return 'assets/unknown.png'
     }
