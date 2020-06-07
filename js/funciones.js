@@ -252,8 +252,10 @@ $(document).ready(function () {
                     return 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2020/05/apex-grid-tile-legends-loba.png'
                 case 'revenant':
                     return 'https://media.contentapi.ea.com/content/dam/apex-legends/images/2020/02/apex-legend-revenant-grid-tile.png'
+                default:
+                    return `https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-${favouriteLegend.toLowerCase()}.png`
             }
-            return `https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-${favouriteLegend.toLowerCase()}.png`
+
         }
         return 'assets/unknown.png'
     }
