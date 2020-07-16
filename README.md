@@ -1,4 +1,4 @@
-<h1 align="center">APEX LEGENDS OPGG</h1>
+<h1 align="center">APEX LEGENDS TRACKER</h1>
 <p align="center">
     <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/apexlogo.png" alt="logo" width="300" height="300"/>
 </p>
