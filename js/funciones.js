@@ -30,7 +30,7 @@ $(document).ready(function () {
         "data-fill": "blue"
     });
 
-    //First call on load
+    //First call (on page load)
     ajaxCall();
 
 
