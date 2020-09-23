@@ -56,9 +56,13 @@ $(document).ready(function () {
             },
             error: function (error) {
                 console.log('----ERROR----');
-                if (error.status === 404) {
-                    $('#notFoundText').fadeIn();
-                }
+                console.log(error);
+                
+                $('#notFoundText').fadeIn();
+                // console.log(error.status);
+                // if (error.status === 404) {
+                //     $('#notFoundText').fadeIn();
+                // }
             }
         });
     }
