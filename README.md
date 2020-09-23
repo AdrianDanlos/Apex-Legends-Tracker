@@ -25,7 +25,7 @@
 
 
 ## Overview
-A real-time statistic tracker for Apex Legends videogame. Search for your username to display data about your rank, kills, wins, top3's.. Ideal for all players that would like to keep track of their in-game stats.
+A real-time statistic tracker for Apex Legends videogame. Type your username to display data about your rank, kills, wins, top3's.. Ideal for all players that would like to keep track of their in-game stats.
 
 Built on top of an Apex unnoficial API.
 
