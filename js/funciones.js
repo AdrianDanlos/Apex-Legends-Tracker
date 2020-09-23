@@ -52,12 +52,7 @@ $(document).ready(function () {
                 let nextRankLogoUrl = getNextRankLogo(result);
                 let favouriteLegendUrl = getFavouriteLegend(result);
                 let nameDisplayed = playerAccount.includes('N3Essential') ? 'N3Essential' : result[0]['global']['name']; //De esta manera cuando se realiza una busqueda masiva a nuestras smurfs solo sale N3essential
-                if (playerAccount == result[0]['global']['name']) {
-                    visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
-                }
-                else{
-                    xhr = 404;
-                }
+                visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
             },
             error: function (error) {
                 console.log('----ERROR----');
