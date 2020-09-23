@@ -40,7 +40,7 @@ $(document).ready(function () {
             contentType: "application/json",
             dataType: 'json',
             success: function (result) {
-                if (!(result instanceof Array)) { //Si la busqueda es de un solo jugador envolvemos los datos deuveltos en un array
+                if (!(result instanceof Array)) { //Si la busqueda es de un solo jugador envolvemos los datos devueltos en un array
                     result = [result];
                 }
                 console.log(result);
@@ -52,17 +52,21 @@ $(document).ready(function () {
                 let nextRankLogoUrl = getNextRankLogo(result);
                 let favouriteLegendUrl = getFavouriteLegend(result);
                 let nameDisplayed = playerAccount.includes('N3Essential') ? 'N3Essential' : result[0]['global']['name']; //De esta manera cuando se realiza una busqueda masiva a nuestras smurfs solo sale N3essential
-                visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+                if (playerAccount == result[0]['global']['name']) {
+                    visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+                }
+                else{
+                    xhr = 404;
+                }
             },
             error: function (error) {
                 console.log('----ERROR----');
                 console.log(error);
-                
-                $('#notFoundText').fadeIn();
-                // console.log(error.status);
-                // if (error.status === 404) {
-                //     $('#notFoundText').fadeIn();
-                // }
+
+                if (error.status !== 0) {
+                    $('#notFoundText').fadeIn();
+                    xhr.status = 404;
+                }
             }
         });
     }
