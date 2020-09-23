@@ -1,4 +1,4 @@
-<h1 align="center">APEX LEGENDS OPGG</h1>
+<h1 align="center">APEX LEGENDS TRACKER</h1>
 <p align="center">
     <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/assets/apexlogo.png" alt="logo" width="300" height="300"/>
 </p>
@@ -25,7 +25,7 @@
 
 
 ## Overview
-The aim of this project is to provide an Apex Legends statistic tracker for all the players who would like to keep track of their in-game stats. 
+A real-time statistic tracker for Apex Legends videogame. Type your username to display data about your rank, kills, wins, top3's.. Ideal for all players that would like to keep track of their in-game stats.
 
 Built on top of an Apex unnoficial API.
 
