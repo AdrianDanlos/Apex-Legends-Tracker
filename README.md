@@ -12,7 +12,7 @@
 </p>
 
 <h3 align="center">Go to 
-  <a href="https://apex-opgg.herokuapp.com/" target="_blank">ApexOPGG</a>
+  <a href="https://apex-legends-tracker-7662d.web.app/" target="_blank">ApexOPGG</a>
 </h3>
 
 <p align="center">
@@ -33,7 +33,7 @@ Built on top of an Apex unnoficial API.
 In order for the API to get players data, in-game banners must be added to each legend.
 
 - STEP 1: Equip the following banners in one of your legends: Kills, Wins & Top3.
-- STEP 2: Refresh your profile in <a href="https://apex-opgg.herokuapp.com/" target="_blank">ApexOPGG</a>
+- STEP 2: Refresh your profile in <a href="https://apex-legends-tracker-7662d.web.app/" target="_blank">ApexOPGG</a>
 
     <img src="https://raw.githubusercontent.com/AdrianDanlos/ApexLegends/master/public/assets/search.png" alt="logo" width="400" height="55"/>
 
