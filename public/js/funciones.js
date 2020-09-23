@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const myAccounts = 'N3Essential,N3EssentialSmurf,EssentialReborn,spacexfanboy,asiatristanvigo,thechinesesoul,thekoreansoul,thethaisoul,thevietsoul,thephilipinesoul,themyanmarsoul';
-    let playerAccount = 'thekoreansoul'; //wizard_of_gore
+    let playerAccount = 'thechinesesoul'; //wizard_of_gore
     let api = `https://cors-anywhere.herokuapp.com/https://api.mozambiquehe.re/bridge?platform=PC&player=${playerAccount}&auth=`;
     const key = 'LPuQwxrvLY7hspWf1eST';
     let xhr; //AjaxCall Object
@@ -52,7 +52,15 @@ $(document).ready(function () {
                 let nextRankLogoUrl = getNextRankLogo(result);
                 let favouriteLegendUrl = getFavouriteLegend(result);
                 let nameDisplayed = playerAccount.includes('N3Essential') ? 'N3Essential' : result[0]['global']['name']; //De esta manera cuando se realiza una busqueda masiva a nuestras smurfs solo sale N3essential
-                visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+                
+                //If the user returned from the API is the one searched for the user display it. Otherwise 404. 
+                //(This prevents the API from returning wrong values due to a partial match C9Tenz -> C9TenZera)
+                if(playerAccount === result[0]['global']['name'].toLowerCase()){
+                    visualizarDatos(datosTotales, datosRanking, online, nameDisplayed, percentageToNextRank, nextRankLogoUrl, favouriteLegendUrl);
+                } 
+                else{
+                    xhr.status = 404;
+                }               
             },
             error: function (error) {
                 console.log('----ERROR----');
